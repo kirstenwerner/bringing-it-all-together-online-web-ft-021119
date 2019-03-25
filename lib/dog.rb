@@ -26,7 +26,7 @@ class Dog
     DB[:conn].execute(sql)
   end 
   
-  def save(name, breed)
+  def save
     if self.id 
       update
     else 
