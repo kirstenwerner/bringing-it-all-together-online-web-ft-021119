@@ -26,4 +26,19 @@ class Dog
     DB[:conn].execute(sql)
   end 
   
+  def self.save(name, breed)
+    if self.id 
+      update
+    else 
+    sql = <<-SQL
+      INSERT INTO dogs (name, breed)
+      VALUES (?, ?)
+      SQL
+    
+    DB[:conn].execute(sql, name, breed)
+    @id = DB[:conn].execute(sql, name, breed)[0][0]
+    self 
+    end
+  end
+  
 end 
