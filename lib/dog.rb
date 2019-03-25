@@ -41,4 +41,9 @@ class Dog
     end
   end
   
+  def self.create(name:, breed:, id: nil)
+    new_dog = self.new(name:, breed:, id: nil)
+    new_dog.name = 
+  end 
+  
 end 
