@@ -86,5 +86,6 @@ class Dog
   end 
   
   def self.update
+    sql = ""
   
 end 
