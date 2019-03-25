@@ -42,9 +42,18 @@ class Dog
   end
   
   def self.create(attribute_hash)
-    # binding.pry
     new_dog = self.new(name: attribute_hash[:name], breed: attribute_hash[:breed], id: attribute_hash[:id]) 
     new_dog.save
   end
+  
+  def find_by_id(id)
+    sql = <<-SQL
+      SELECT * FROM dogs
+      WHERE id = ?
+      SQL
+    
+    new_dog = DB[:conn].execute(sql, id)
+    self.new(new_dog[1], new_dog[2], new_dog[0])
+  end 
   
 end 
